@@ -64,14 +64,6 @@ def compute_goalie_score(stats):
     ot = stats.get("T/O", 0) or 0
     so = stats.get("SO", 0) or 0
     sv = stats.get("SV", 0) or 0
-    # Add skater-style stats
-    g = stats.get("G", 0) or 0
-    a = stats.get("A", 0) or 0
-    pim = stats.get("PIM", 0) or 0
-    ppp = stats.get("PPP", 0) or 0
-    shp = stats.get("SHP", 0) or 0
-    gwg = stats.get("GWG", 0) or 0
-    sog = stats.get("SOG", 0) or 0
 
     score = (
         GOALIE_WEIGHTS["W"] * w
@@ -79,13 +71,6 @@ def compute_goalie_score(stats):
         + GOALIE_WEIGHTS["SV"] * sv
         + GOALIE_WEIGHTS["SO"] * so
         + GOALIE_WEIGHTS["T/O"] * ot
-        + SKATER_WEIGHTS["G"] * g
-        + SKATER_WEIGHTS["A"] * a
-        + SKATER_WEIGHTS["PIM"] * pim
-        + SKATER_WEIGHTS["PPP"] * ppp
-        + SKATER_WEIGHTS["SHP"] * shp
-        + SKATER_WEIGHTS["GWG"] * gwg
-        + SKATER_WEIGHTS["SOG"] * sog
     )
     return score
 
@@ -192,3 +177,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
